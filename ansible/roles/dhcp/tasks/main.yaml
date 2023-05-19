@@ -1,0 +1,27 @@
+- name: "Asegurar que isc-dhcp-server está instalado"
+  apt:
+    pkg: apache2
+
+- name: Copiar interfaz dhcp
+  template:
+    src: isc-dhcp-server
+    dest: /etc/default/isc-dhcp-server
+    owner: root
+    group: root
+    mode: 0644
+
+
+- name: "Copiar fichero de configuración dhcpd.conf y reiniciar servicio"
+  template:
+    src: dhcpd.conf
+    dest: /etc/dhcp/dhcpd.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify: Reiniciar dhcp-server
+
+- name: "Asegurar que el servicio isc-dhcp-server está activo y funcionando"
+  service:
+    name: isc-dhcp-server
+    state: started
+    enabled: yes
