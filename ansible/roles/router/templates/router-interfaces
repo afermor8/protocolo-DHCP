@@ -1,0 +1,25 @@
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+
+# Red Nat sin DHCP
+allow-hotplug enp8s0
+iface enp8s0 inet static
+      address {{ip_router_enp8s0}}
+      netmask 255.255.255.0
+      network 192.168.128.0
+      broadcast 192.168.128.255
+      gateway {{gw_red_nat}}
+
+# Red aislada
+auto enp9s0
+iface enp9s0 inet static
+      address {{ip_router_interna}}
+      netmask 255.255.255.0
+
+
+up iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -o enp8s0 -j MASQUERADE
+up iptables -t nat -A PREROUTING -p tcp --dport 80 -i enp8s0 -j DNAT --to {{ip_cliente_interna}}
