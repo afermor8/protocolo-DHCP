@@ -1,4 +1,5 @@
 red_privada: 10.0.0.0/24
+red_nat: 192.168.128.0/24
 ip_router_interna: 10.0.0.1
 ip_cliente_interna: 10.0.0.2
 ip_router_enp8s0: 192.168.128.98
