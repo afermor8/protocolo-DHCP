@@ -16,3 +16,5 @@ iface enp9s0 inet static
 # Red aislada
 auto enp8s0
 iface enp8s0 inet dhcp
+    post-up ip route del default dev enp9s0
+    post-up ip rout add default dev enp8s0

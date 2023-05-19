@@ -3,11 +3,6 @@
   roles:
    - role: common
 
-- hosts: router
-  become: true
-  roles:
-   - role: dhcp
-
 - hosts: routers
   become: true
   roles:
@@ -17,6 +12,11 @@
   become: true
   roles:
    - role: cliente 
+
+- hosts: router
+  become: true
+  roles:
+   - role: dhcp
 
 - hosts: cliente       
   become: true

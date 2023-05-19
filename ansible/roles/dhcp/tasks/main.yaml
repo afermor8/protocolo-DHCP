@@ -1,6 +1,6 @@
 - name: "Asegurar que isc-dhcp-server está instalado"
   apt:
-    pkg: apache2
+    pkg: isc-dhcp-server
 
 - name: Copiar interfaz dhcp
   template:
