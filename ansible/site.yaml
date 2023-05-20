@@ -3,20 +3,20 @@
   roles:
    - role: common
 
-- hosts: routers
+- hosts: router
   become: true
   roles:
    - role: router
-
-- hosts: clientes       
-  become: true
-  roles:
-   - role: cliente 
 
 - hosts: router
   become: true
   roles:
    - role: dhcp
+
+- hosts: clientes       
+  become: true
+  roles:
+   - role: cliente 
 
 - hosts: cliente       
   become: true

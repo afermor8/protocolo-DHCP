@@ -9,12 +9,13 @@ allow-hotplug enp9s0
 iface enp9s0 inet static
     address {{ip_cliente_enp9s0}}
     netmask 255.255.255.0
-    network 192.168.128.0
-    broadcast 192.168.128.255
-    gateway {{gw_red_nat}}
+    network {{red_default}}
+    broadcast {{default_broadcast}}
+    gateway {{gw_red_default}}
 
 # Red aislada
-auto enp8s0
+allow-hotplug enp8s0
 iface enp8s0 inet dhcp
-    post-up ip route del default dev enp9s0
-    post-up ip rout add default dev enp8s0
+    post-up ip route del default dev enp9s0 || true
+    post-up dhclient $IFACE
+#    pre-down ip route add default dev enp9s0
