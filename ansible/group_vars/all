@@ -1,7 +1,13 @@
 red_privada: 10.0.0.0/24
+red_privada2: 10.0.0.0
 red_nat: 192.168.128.0/24
+red_nat2: 192.168.128.0
+red_default: 192.168.122.0
+default_broadcast: 192.168.122.255
 ip_router_interna: 10.0.0.1
 ip_cliente_interna: 10.0.0.2
 ip_router_enp8s0: 192.168.128.98
-ip_cliente_enp9s0: 192.168.128.100
+ip_cliente_enp9s0: 192.168.122.100
 gw_red_nat: 192.168.128.1
+gw_red_default: 192.168.122.1
+MAC_interfaz_priv_cliente: 52:54:00:98:31:bd
